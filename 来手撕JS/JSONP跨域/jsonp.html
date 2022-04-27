@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        jsonp是利用src属性发起的get请求不受同源策略的限制完成的跨域
+        具体流程是将一个可接受数据的函数名添加到url的参数部分里的查询参数部分
+        服务端接收到请求，解析url的参数得到函数名，将要传递的json数据拼接到字符串中成为回调函数的参数 
+    -->
+</body>
+<script>
+    function callback(data) {
+        console.log(data)
+    }
+</script>
+<script src="http://localhost:3001/?callback=callback"></script>
+
+</html>
