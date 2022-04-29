@@ -38,6 +38,5 @@ function repeat2(fn, time, delay) {
         })   //创建一个异步任务，延时相应的时间，时间到了再次执行函数
     }
 }
-
 const repeatFn2 = repeat2(console.log, 4, 3000);
 repeatFn2("hello");
