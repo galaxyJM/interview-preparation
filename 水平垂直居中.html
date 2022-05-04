@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="parent1">
+        <div class="son1">我是儿子1</div>
+    </div>
+    <div class="parent2">
+        <div class="son2">我是儿子2</div>
+    </div>
+    <div class="parent3">
+        <div class="son3">我是儿子3</div>
+    </div>
+    <div class="parent4">
+        <div class="son4">我是儿子4</div>
+    </div>
+</body>
+<style>
+    .parent1 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .son1 {
+        position: absolute;
+        border: 1px solid green;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .parent2 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .son2 {
+        position: absolute;
+        border: 1px solid green;
+        width: 100px;
+        left: 50%;
+        margin-left: -50px;
+        text-align: center;
+    }
+
+    .parent3 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        display: flex;
+        justify-content: center;
+    }
+
+    .son3 {
+        border: 1px solid green;
+    }
+    .parent4 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+    }
+
+    .son4 {
+        border: 1px solid green;
+        width: 100px;
+        height: 100px;
+        margin: auto auto;
+    }
+</style>
+
+</html>
