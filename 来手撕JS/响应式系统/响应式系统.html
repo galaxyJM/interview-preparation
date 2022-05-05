@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <button type="button" id="changeText">点我一下有惊喜</button>
+</body>
+<script>
+    const test = document.querySelector("#changeText")
+    let arr = ['我变了', '哈哈哈', '为什么没有面试！', '有面试也过不去', '摆烂吧','嘻嘻嘻嘻嘻嘻嘻']
+    let index = 0
+    test.addEventListener("click", () => {
+        if (index >= arr.length) { return }
+        obj.text = arr[index++]
+    })
+</script>
+<script src="./reactive.js"></script>
+
+</html>
