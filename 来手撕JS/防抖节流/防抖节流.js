@@ -19,7 +19,7 @@ function add(a, b) {
 let newAdd = throttle(add, 3000)
 newAdd(2, 3)
 
-// 防抖 当用户的操作频繁出发事件是可以使用，如input的oninput事件，要实现用户输入完毕后一段时间再触发事件可以使用防抖
+// 防抖 当用户的操作频繁触发事件时可以使用，如input的oninput事件，要实现用户输入完毕后一段时间再触发事件可以使用防抖
 function debounce(fn, delay) {
     let timer
     return (...args) => {
