@@ -26,7 +26,6 @@ Promise.myAll = function (iterable) {
     })
 }
 
-
 // promise的失败请求功能
 // 实现getData函数失败在一定次数之内重试
 function getData() {
@@ -67,4 +66,49 @@ Promise.retry = function (fn, limit = 5, delay = 1000) {
     })
 }
 
+//失败重试，到达限制输出缓存
+Promise.retryAndCache = function (fn, options = {}) {
+    let count = 0
+    // 设置默认选项
+    options = Object.assign({
+        limit: 5,
+        delay: 1000,
+        isCache: false,
+        cacheKey: '',
+        cacheMaxAge: 0
+    }, options)
+    console.log(options)
+    return new Promise((resolve, reject) => {
+        const run = () => {
+            fn().then((data) => {
+                console.log(data)
+                if (options.isCache) {
+                    window.localStorage.setItem(options.cacheKey, JSON.stringify({
+                        data,
+                        maxAge: Date.now() + options.cacheMaxAge
+                    }))
+                }
+                resolve(data)
+            }).catch((err) => {
+                if (count < options.limit) {
+                    setTimeout(() => {
+                        run()
+                    }, options.delay)
+                    count++
+                } else {
+                    if(options.isCache){
+                        let cache = JSON.parse(window.localStorage.getItem(options.cacheKey))
+                        if(cache && Date.now() < cache.maxAge){
+                            resolve(cache.data)
+                        }
+                    }
+                    reject(err)
+                }
+            })
+        }
+        run()
+    })
+}
+
 Promise.retry(getData, 5, 2000)
+Promise.retryAndCache(getData, {limit:3,delay: 0,isCache: true,cacheKey: 'lll',cacheMaxAge: 0})
